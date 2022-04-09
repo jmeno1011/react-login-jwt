@@ -42,3 +42,5 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 ## 사용한 main template
 
 ### `sign-in side` [source code](https://github.com/mui/material-ui/tree/v5.6.0/docs/data/material/getting-started/templates/sign-in-side)
+
+- 필요 npm : npm install @mui/material @mui/icons-material @emotion/styled @emotion/react
