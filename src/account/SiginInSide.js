@@ -12,6 +12,7 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import axios from "axios";
 
 function Copyright(props) {
   return (
@@ -37,10 +38,20 @@ const SiginInSide = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    const logData = {
+      user_id: data.get("email"),
+      user_pw: data.get("password"),
+    };
     console.log({
       email: data.get("email"),
       password: data.get("password"),
     });
+
+    axios({
+      method: "post",
+      url: "https://node-login-jwt-production.up.railway.app/user/login",
+      data: logData,
+    }).then((res) => console.log(res.data));
   };
 
   return (
