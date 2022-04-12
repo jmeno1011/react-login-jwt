@@ -13,6 +13,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -35,6 +36,8 @@ function Copyright(props) {
 const theme = createTheme();
 
 const SiginInSide = () => {
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -51,7 +54,11 @@ const SiginInSide = () => {
       method: "post",
       url: "https://node-login-jwt-production.up.railway.app/user/login",
       data: logData,
-    }).then((res) => console.log(res.data));
+    }).then((res) =>{if(res.data){
+      console.log(res.data)
+      navigate('/album');
+    } });
+    
   };
 
   return (

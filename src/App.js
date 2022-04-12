@@ -1,6 +1,8 @@
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.css";
 import SiginInSide from "./account/SiginInSide";
+import { Route, Routes } from "react-router-dom";
+import Album from "./album/Album";
 
 function App() {
   return (
@@ -20,9 +22,14 @@ function App() {
     //     </a>
     //   </header>
     // </div>
-    <>
-      <SiginInSide />
-    </>
+    <div>
+      <Routes>
+        <Route path="/" element={<SiginInSide />} />
+        <Route path="/login" element={<SiginInSide />} />
+        <Route path="/album" element={<Album />} />
+      </Routes>
+      {/* <SiginInSide /> */}
+    </div>
   );
 }
 
