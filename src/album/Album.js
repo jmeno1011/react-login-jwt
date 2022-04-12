@@ -13,16 +13,19 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
+      {/* <Link color="inherit" href="https://mui.com/"> */}
+      <a style={{color:"inherit"}} href="https://mui.com/">
         Your Website
-      </Link>{' '}
+      {/* </Link>{' '} */}
+      </a>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -37,13 +40,14 @@ export default function Album() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar position="relative">
+      <AppBar position="relative" style={{display:'flex', flexDirection:'row', justifyContent:'space-between'}}>
         <Toolbar>
           <CameraIcon sx={{ mr: 2 }} />
           <Typography variant="h6" color="inherit" noWrap>
             Album layout
           </Typography>
         </Toolbar>
+        <Link to="/" style={{paddingRight:'1rem'}}><h1>Home</h1></Link>
       </AppBar>
       <main>
         {/* Hero unit */}
