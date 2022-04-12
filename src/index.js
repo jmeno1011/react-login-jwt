@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import { axios } from "axios";
+import axios from "axios";
 
 axios.defaults.baseURL = "https://master.d1jhqlapqey5c5.amplifyapp.com";
 axios.defaults.withCredentials = true;
