@@ -54,11 +54,16 @@ const SiginInSide = () => {
       method: "post",
       url: "/user/login",
       data: logData,
-    }).then((res) =>{if(res.data){
-      console.log(res.data)
-      navigate('/album');
-    } });
-    
+    }).then((res) => {
+      if (res.data) {
+        const accessToken = res.data.ac;
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer::${accessToken}`;
+        console.log(res.data);
+        navigate("/album");
+      }
+    });
   };
 
   return (
