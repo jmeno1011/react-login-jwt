@@ -42,6 +42,11 @@ export default function Album() {
     const response = await axios({
       method: "get",
       url: "/home/test",
+    }).then((res) => {
+      const refreshToken = window.localStorage.getItem("rf");
+      axios.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer::${refreshToken}`;
     });
     console.log(response.data.table);
   };

@@ -57,9 +57,12 @@ const SiginInSide = () => {
     }).then((res) => {
       if (res.data) {
         const accessToken = res.data.ac;
+        const refreshToken = res.data.rf;
         axios.defaults.headers.common[
           "Authorization"
         ] = `Bearer::${accessToken}`;
+        window.localStorage.setItem("rf", refreshToken);
+        console.log("refreshToken::", refreshToken);
         console.log(res.data);
         navigate("/album");
       }
