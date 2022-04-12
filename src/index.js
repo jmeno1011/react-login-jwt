@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://master.d1jhqlapqey5c5.amplifyapp.com";
+axios.defaults.baseURL = "https://node-login-jwt-production.up.railway.app";
 axios.defaults.withCredentials = true;
 
 ReactDOM.render(
