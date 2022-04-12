@@ -52,7 +52,7 @@ const SiginInSide = () => {
 
     axios({
       method: "post",
-      url: "https://node-login-jwt-production.up.railway.app/user/login",
+      url: "/user/login",
       data: logData,
     }).then((res) =>{if(res.data){
       console.log(res.data)
