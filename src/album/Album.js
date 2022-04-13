@@ -38,22 +38,108 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const theme = createTheme();
 
 export default function Album() {
+  // const fetchUser = async () => {
+  //   const response = await axios({
+  //     method: "get",
+  //     url: "/home/test",
+  //   }).then((res) => {
+  //     const refreshToken = window.localStorage.getItem("rf");
+  //     axios.defaults.headers.common[
+  //       "Authorization"
+  //     ] = `Bearer::${refreshToken}`;
+  //   });
+  //   console.log(response.data.table);
+  // };
+  const [testImg, setTestImg] = React.useState([]);
+
   const fetchUser = async () => {
     const response = await axios({
       method: "get",
-      url: "/home/test",
-    }).then((res) => {
-      const refreshToken = window.localStorage.getItem("rf");
-      axios.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer::${refreshToken}`;
+      url: "/pokemon",
     });
-    console.log(response.data.table);
+    console.log(response.data.pokemon);
+    setTestImg(response.data.pokemon);
   };
 
   React.useEffect(() => {
     fetchUser();
-  });
+  }, []);
+
+  const albumList = () => {
+    cards.map((card) => {
+      if (card === 1) {
+        return (
+          <Grid item key={card} xs={12} sm={6} md={4}>
+            <Card
+              sx={{
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <CardMedia
+                component="img"
+                sx={{
+                  // 16:9
+                  pt: "56.25%",
+                }}
+                image="https://source.unsplash.com/random"
+                alt="random"
+              />
+              <CardContent sx={{ flexGrow: 1 }}>
+                <Typography gutterBottom variant="h5" component="h2">
+                  Heading
+                </Typography>
+                <Typography>
+                  This is a media card. You can use this section to describe the
+                  content.
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button size="small">View</Button>
+                <Button size="small">Edit</Button>
+              </CardActions>
+            </Card>
+          </Grid>
+        );
+      } else {
+        return (
+          <Grid item key={card} xs={12} sm={6} md={4}>
+            <Card
+              sx={{
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <CardMedia
+                component="img"
+                sx={{
+                  // 16:9
+                  pt: "56.25%",
+                }}
+                image="https://source.unsplash.com/random"
+                alt="random"
+              />
+              <CardContent sx={{ flexGrow: 1 }}>
+                <Typography gutterBottom variant="h5" component="h2">
+                  Heading
+                </Typography>
+                <Typography>
+                  This is a media card. You can use this section to describe the
+                  content.
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button size="small">View</Button>
+                <Button size="small">Edit</Button>
+              </CardActions>
+            </Card>
+          </Grid>
+        );
+      }
+    });
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -119,8 +205,9 @@ export default function Album() {
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+            {/* {albumList()} */}
+            {testImg.map((pokemon) => (
+              <Grid item key={pokemon.no} xs={12} sm={6} md={4}>
                 <Card
                   sx={{
                     height: "100%",
@@ -134,16 +221,19 @@ export default function Album() {
                       // 16:9
                       pt: "56.25%",
                     }}
-                    image="https://source.unsplash.com/random"
+                    image={pokemon.url}
                     alt="random"
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      {pokemon.no}
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe
-                      the content.
+                      이름 : {pokemon.name}
+                      <br />
+                      타입 : {pokemon.type}
+                      {/* This is a media card. You can use this section to describe
+                      the content. */}
                     </Typography>
                   </CardContent>
                   <CardActions>
